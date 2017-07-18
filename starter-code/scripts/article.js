@@ -50,8 +50,8 @@ Article.fetchAll = function() {
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
-    Article.loadAll(JSON.parse(localStorage.getItem('rawData'))); //DONE: What do we pass in to loadAll()?
     //DONE: What method do we call to render the index page?
+    Article.loadAll(JSON.parse(localStorage.getItem('rawData'))); //DONE: What do we pass in to loadAll()?
     articleView.initIndexPage();
   } else {
     // DONE: When we don't already have the rawData,
@@ -63,6 +63,8 @@ Article.fetchAll = function() {
     .then(
       function(data) {
         localStorage.setItem('rawData', JSON.stringify(data));
+        Article.loadAll(JSON.parse(localStorage.getItem('rawData')));
+        articleView.initIndexPage();
       },
 
       function(err) {
