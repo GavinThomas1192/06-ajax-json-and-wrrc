@@ -58,5 +58,31 @@ Article.fetchAll = function() {
     // cache it in localStorage so we can skip the server call next time,
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
+    $.get('/data/hackeripsum.json')
+    .then(
+      function(data) {
+        console.log(data);
+      },
+
+      function(err) {
+        console.log(err);
+      }
+    )
+
+  //   let successCallBack = function(data) {
+  //   let template = Handlebars.compile($('#template').html());
+  //   $('#app').html(template({person: data.results});
+  //
+  // };
+  //
+  //
+  // let errorCallback = function(err) {
+  //
+  // };
+  // $.getJSON('https://swapi.co/api/people')
+  //   .then(successCallBack, errorCallback);
+
+
+
   }
 }
